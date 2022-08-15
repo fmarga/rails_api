@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
- resources :workouts, only: %i[index show create update destroy]
+  resources :activities, only: %i[index show create update destroy]
+  resources :workouts, only: %i[index show create update destroy]
 end
