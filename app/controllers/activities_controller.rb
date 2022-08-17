@@ -3,31 +3,35 @@ class ActivitiesController < ApplicationController
 
   # GET /activities
   def index
-    @activities = Activity.all
+    activities = Activity.all
 
-    render json: @activities
+    render json: activities.as_json(except: %i[created_at updated_at]), status: :ok
   end
 
   # GET /activities/:id
   def show
-    render json: @activity
+    if @activity
+      render json: @activity.as_json(except: %i[created_at updated_at]), status: :ok
+    else
+      return render :not_found
+    end
   end
 
   # POST /activities
   def create
-    @activity = Activity.new(activity_params)
+    activity = Activity.new(activity_params)
 
-    if @activity.save
-      render json: @activity, status: :created, location: @activity
+    if activity.save
+      render json: activity.as_json(except: %i[created_at updated_at]), status: :created, location: @activity
     else
-      render json: @activity.errors, status: :unprocessable_entity
+      render json: activity.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH /activities/:id
   def update
     if @activity.update(activity_params)
-      render json: @activity
+      render json: @activity.as_json(except: %i[created_at updated_at]), status: :ok
     else
       render json: @activity.errors, status: :unprocessable_entity
     end
@@ -41,7 +45,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :series, :repeat, :weight)
+    params.require(:activity).permit(:id, :name, :series, :repeat, :weight)
   end
 
   def set_activity
