@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_16_221954) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_17_221218) do
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.integer "series"
@@ -20,6 +20,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_221954) do
     t.datetime "updated_at", null: false
     t.integer "workout_id"
     t.index ["workout_id"], name: "index_activities_on_workout_id"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "workouts", force: :cascade do |t|

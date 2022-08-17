@@ -14,5 +14,18 @@ namespace :seed do
     end
 
     p 'Activities created successfully!'
+
+    ######################################
+
+    p 'Creating workout levels'
+
+    levels = %w(Beginner Intermediate Advanced)
+    levels.each do |level|
+      Level.create!(
+        level: level
+      )
+    end
+
+    p 'Workout levels created successfully!'
   end
 end
