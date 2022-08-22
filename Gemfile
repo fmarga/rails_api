@@ -46,6 +46,8 @@ group :development, :test do
   gem 'pry-byebug'
   # A library for generating fake data such as names, addresses, and phone numbers.
   gem 'faker'
+  # RSpec for Rails
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
 end
 
 group :development do

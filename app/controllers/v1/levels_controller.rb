@@ -1,4 +1,4 @@
-class LevelsController < ApplicationController
+class V1::LevelsController < ApplicationController
   before_action :set_level, only: :show
 
   def index
