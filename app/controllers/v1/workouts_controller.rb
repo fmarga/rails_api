@@ -9,7 +9,7 @@ class V1::WorkoutsController < ApplicationController
 
   def show
     if @workout
-      render json: @workout.as_json(except: %i[created_at uptated_at]), status: :ok
+      render json: @workout.as_json(except: %i[created_at updated_at]), status: :ok
     else
       return render :not_found
     end
