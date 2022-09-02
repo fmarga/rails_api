@@ -22,7 +22,7 @@ class V1::ActivitiesController < ApplicationController
     activity = Activity.new(activity_params)
 
     if activity.save
-      render json: activity.as_json(except: %i[created_at updated_at]), status: :created, location: @activity
+      render json: activity.as_json(except: %i[created_at updated_at]), status: :created, location: activity
     else
       render json: activity.errors, status: :unprocessable_entity
     end
