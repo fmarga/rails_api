@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_17_221218) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_02_205843) do
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.integer "series"
@@ -32,7 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_17_221218) do
     t.date "expires"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level_id"
+    t.index ["level_id"], name: "index_workouts_on_level_id"
   end
 
   add_foreign_key "activities", "workouts"
+  add_foreign_key "workouts", "levels"
 end
